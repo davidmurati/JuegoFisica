@@ -1,0 +1,130 @@
+.car-race-container {
+  padding: 2vh;
+  background-color: #f0f4f8;
+  border-radius: 1vh;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+  width: 80vw;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 4vh;
+  font-weight: bold;
+  margin-bottom: 2vh;
+  text-align: center;
+}
+
+.timer, .score {
+  font-size: 2.5vh;
+  margin-bottom: 2vh;
+  text-align: center;
+}
+
+.track {
+  position: relative;
+  height: 30vh;
+  background-color: #e0e7ff;
+  border-radius: 1vh;
+  overflow: hidden;
+  margin-bottom: 2vh;
+  border: 0.4vh solid #000;
+}
+
+.start-line, .finish-line {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  width: 5vh;
+  background-color: transparent;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-weight: bold;
+  font-size: 2vh;
+  text-align: center;
+}
+
+.start-line {
+  left: 0;
+}
+
+.finish-line {
+  right: 0;
+}
+
+.distance-marker {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  padding: 0.5vh 1vh;
+  border-radius: 0.5vh;
+  font-size: 2vh;
+  font-weight: bold;
+}
+
+.car {
+  position: absolute;
+  width: 7vh;
+  height: 7vh;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 3vh;
+  transition: left 0.1s linear;
+}
+
+.blue-car {
+  background-color: #3b82f6;
+  top: 15%;
+}
+
+.green-car {
+  background-color: #10b981;
+  bottom: 15%;
+}
+
+.start-race-button, .start-game-button, .guess-buttons button {
+  margin-top: 2vh;
+  width: 60%;
+}
+
+.guess-buttons {
+  display: flex;
+  gap: 2vh;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+
+.p {
+  margin-bottom: 0px;
+  color: #020202;
+}
+
+
+
+@media (max-width: 500px) {
+  .car {
+    width: 5vh;
+    height: 5vh;
+    font-size: 2vh;
+  }
+
+  .track {
+    height: 40vh;
+  }
+
+  .start-line, .finish-line {
+    font-size: 1.5vh;
+  }
+
+}

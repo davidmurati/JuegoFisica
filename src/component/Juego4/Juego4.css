@@ -1,0 +1,155 @@
+.game-container {
+    padding: 16px;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #242222;
+  }
+
+  body {
+    background-color: #1d1a1a;
+    
+  }
+
+  h2 {
+    
+    color: #f3f3f3;
+  }
+
+  label {
+    
+    color: #f3f3f3;
+  }
+  
+  .game-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  
+  .controls {
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .sphere-count {
+    margin-left: 8px;
+  }
+  
+  .force-slider {
+    width: 60%;
+  }
+  
+  .game-field {
+    position: relative;
+    height: 80px;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 16px 0;
+  }
+  
+  .game-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+  }
+  
+  .game-box {
+    position: absolute;
+    bottom: 0;
+    width: 20px;
+    height: 20px;
+    background-color: #ff0000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .game-sphere {
+    width: 8px;
+    height: 8px;
+    background-color: #0000ff;
+    border-radius: 50%;
+    margin: 2px;
+  }
+  
+  .game-target {
+    position: absolute;
+    bottom: 0;
+    width: 2px;
+    height: 100%;
+    background-color: #00ff00;
+  }
+  
+  .status {
+    margin-top: 16px;
+    font-size: 14px;
+  }
+  
+  .game-alert {
+    margin-top: 16px;
+    border-radius: 8px;
+    background-color: #242222;
+    border-left: 4px solid #ffe58f;
+    border-left: 4px solid #242222;
+  }
+  
+  @media (max-width: 600px) {
+    .game-container {
+      padding: 12px;
+      max-width: 100%;
+    }
+  
+    .game-title {
+      font-size: 20px
+    }
+
+    .controls {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .force-slider {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .game-container {
+      padding: 8px;
+    }
+  
+    .game-title {
+      font-size: 18px;
+    }
+  
+    .game-field {
+      height: 60px;
+    }
+  
+    .game-box {
+      width: 15px;
+      height: 15px;
+    }
+  
+    .game-sphere {
+      width: 6px;
+      height: 6px;
+    }
+  
+    .game-target {
+      width: 1px;
+    }
+  
+    .status {
+      font-size: 12px;
+    }
+  }

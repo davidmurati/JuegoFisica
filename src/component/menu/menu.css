@@ -1,0 +1,74 @@
+/* Contenedor principal */
+.menu-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+
+
+  /* Logo container styles */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    
+    width: 100%;
+  }
+  
+  /* Logo styles */
+  .App-logo {
+    max-width:max-content;
+    width: 100%;
+    height: auto;
+    
+  }
+
+  
+  
+  /* Título del menú */
+  .menu-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #f3f3f3;
+  }
+  
+  /* Contenedor de opciones de juego */
+  .game-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  /* Botón de juego */
+  .game-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Efecto hover en los botones */
+  .game-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsivo para pantallas pequeñas */
+  @media (max-width: 480px) {
+    .menu-container {
+      padding: 15px;
+    }
+  
+    .menu-title {
+      font-size: 20px;
+    }
+  
+    .game-button {
+      font-size: 16px;
+      padding: 8px 16px;
+    }
+}
