@@ -93,7 +93,7 @@ const NewtonBoxGame = () => {
     const frictionForce = friction ? +(FRICTION_COEFFICIENT * mass * GRAVITY).toFixed(4) : 0;
     const netForce = force.toFixed(4) - frictionForce.toFixed(4);
     const acceleration = +(netForce / mass).toFixed(4);
-    setAceleracion(acceleration.toFixed(4));
+    setAceleracion(acceleration);
     setVelocity(+(acceleration * Tiempo).toFixed(4));
     setGameState('moving');
     setMessage('');
