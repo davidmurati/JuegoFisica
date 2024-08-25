@@ -6,37 +6,45 @@ const NewtonBoxGame = () => {
   const [position, setPosition] = useState(0);
   const [target, setTarget] = useState(null);
   const [velocity, setVelocity] = useState(0);
+  const [aceleracion, setAceleracion] = useState(0);
   const [friction, setFriction] = useState(false);
   const [gameState, setGameState] = useState('initial');
   const [force, setForce] = useState(10);
   const [score, setScore] = useState(0);
   const [message, setMessage] = useState('');
-
+  const [timeElapsed, setTimeElapsed] = useState(0);
+  
   const FRICTION_COEFFICIENT = 0.05;
   const GRAVITY = 9.8;
   const FIELD_LENGTH = 300;
   const BOX_WIDTH = 10;
   const Tiempo = 0.1;
-/*en esta parte del codigo donde dice velocity es aceleracion y 0.1 el tiempo*/ 
+
   useEffect(() => {
+    let timeInterval;
     if (gameState === 'moving') {
-      const interval = setInterval(() => {
+      timeInterval = setInterval(() => {
+        setTimeElapsed((prevTime) => +(prevTime + Tiempo).toFixed(4));
+      }, Tiempo * 1000);
+
+      const positionInterval = setInterval(() => {
         setPosition((prevPosition) => {
-          const newPosition = prevPosition + velocity * 0.1;
+          const newPosition = +(prevPosition + velocity * Tiempo + 0.5 * aceleracion * Tiempo * Tiempo).toFixed(4);
           if (friction) {
             setVelocity((prevVelocity) => {
               const mass = 5 + spheres * 10;
-              const frictionForce = FRICTION_COEFFICIENT * mass * GRAVITY;
+              const frictionForce = +(FRICTION_COEFFICIENT * mass * GRAVITY).toFixed(4);
               const acceleration = -frictionForce / mass;
-              const newVelocity = prevVelocity + acceleration * 0.1;
+              const newVelocity = +(prevVelocity + acceleration * Tiempo).toFixed(4);
               return newVelocity > 0 ? newVelocity : 0;
             });
           }
           if (newPosition >= FIELD_LENGTH || velocity <= 0) {
             setGameState('finished');
-            clearInterval(interval);
+            clearInterval(positionInterval);
+            clearInterval(timeInterval);  // Detener el contador de tiempo cuando el movimiento se detenga
             if (isBoxOverlappingTarget(newPosition)) {
-              setScore(prevScore => prevScore + 1);
+              setScore((prevScore) => prevScore + 1);
               setMessage('¡Felicidades! Ganaste un punto. ¡Eres muy fuerte!');
             } else if (newPosition + BOX_WIDTH < target) {
               setMessage('Poca fuerza aplicada. ¡Inténtalo de nuevo!');
@@ -47,7 +55,11 @@ const NewtonBoxGame = () => {
           return newPosition < FIELD_LENGTH ? newPosition : FIELD_LENGTH;
         });
       }, 100);
-      return () => clearInterval(interval);
+
+      return () => {
+        clearInterval(positionInterval);
+        clearInterval(timeInterval);
+      };
     }
   }, [gameState, velocity, friction, target, spheres]);
 
@@ -72,15 +84,17 @@ const NewtonBoxGame = () => {
     setPosition(0);
     setVelocity(0);
     setMessage('');
+    setTimeElapsed(0);  // Reiniciar el contador de tiempo
   };
 
   const push = () => {
     if (gameState !== 'ready') return;
     const mass = 5 + spheres * 10;
-    const frictionForce = friction ? FRICTION_COEFFICIENT * mass * GRAVITY : 0;
-    const netForce = force - frictionForce;
-    const acceleration = netForce / mass;
-    setVelocity(acceleration * 1);
+    const frictionForce = friction ? +(FRICTION_COEFFICIENT * mass * GRAVITY).toFixed(4) : 0;
+    const netForce = force.toFixed(4) - frictionForce.toFixed(4);
+    const acceleration = +(netForce / mass).toFixed(4);
+    setAceleracion(acceleration.toFixed(4));
+    setVelocity(+(acceleration * Tiempo).toFixed(4));
     setGameState('moving');
     setMessage('');
   };
@@ -91,6 +105,7 @@ const NewtonBoxGame = () => {
     setTarget(null);
     setGameState('initial');
     setMessage('');
+    setTimeElapsed(0);  // Reiniciar el contador de tiempo
   };
 
   return (
@@ -112,8 +127,8 @@ const NewtonBoxGame = () => {
           type="range"
           value={force}
           onChange={(e) => setForce(parseInt(e.target.value))}
-          max={100}
-          step={10}
+          max={1010}
+          step={50}
           className="force-slider"
           disabled={gameState === 'moving'}
         />
@@ -144,22 +159,23 @@ const NewtonBoxGame = () => {
         )}
       </div>
       <div className="status">
-        <p>Posición: {Math.round(position)} unidades</p>
-        <p>Velocidad: {Math.round(velocity * 0.1*1000) } miliunidades/s</p>
-        <p>Objetivo: {target !== null ? `${target} unidades` : 'No establecido'}</p>
+        <p>Aceleración: {aceleracion.toFixed(2)} unidades/s²</p>
+        <p>Velocidad: {velocity.toFixed(2)} unidades/s</p>
+        <p>Objetivo: {target !== null ? `${target} Distancia` : 'No establecido'}</p>
         <p>Peso total: {5 + spheres * 10} kg</p>
         <p>Fuerza aplicada: {force} N</p>
-        <p>Tiempo de aplicacion de la Fuerza aplicada: 0.1 s</p>
+        <p>Tiempo de aplicación de la Fuerza aplicada: 0.1 s</p>
         <p>Puntuación: {score}</p>
+        
       </div>
       {message && (
         <div className="game-alert">
           <p>{message}</p>
         </div>
       )}
-        <button onClick={() => window.location.href = "/"} className="shoot-button">
-                Regresar
-        </button>
+      <button onClick={() => window.location.href = "/"} className="shoot-button">
+        Regresar
+      </button>
     </div>
   );
 };
