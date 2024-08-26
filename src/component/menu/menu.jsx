@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import './menu.css';
-import imagen1 from './v80.png';
+import imagen1 from './fisicaImagen.png';
 
 const Menu = () => {
   const history = useHistory();
