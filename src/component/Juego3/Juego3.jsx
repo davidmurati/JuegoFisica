@@ -5,7 +5,7 @@ const ParabolicShot = () => {
   const [gameStarted, setGameStarted] = useState(false);
   const [angle, setAngle] = useState(45);
   const [score, setScore] = useState(0);
-  const [targetPosition, setTargetPosition] = useState(0);
+  const [targetPosition, setTargetPosition] = useState({ x: 0, y: 0 });
   const [velocity, setVelocity] = useState('medio');
   const [cannonPosition, setCannonPosition] = useState(0);
   const [refresh, setRefresh] = useState(0);
@@ -19,16 +19,28 @@ const ParabolicShot = () => {
   const cannonY = canvasHeight - 50;
   const maxDistance = 100;
   const scale = (canvasWidth - 100) / maxDistance;
-
+  
   const velocities = {
-    lento: 30,
+    lento: 40,
     medio: 50,
     rapido: 70,
   };
 
+  const targetSpeeds = {
+    lento: 0.1,
+    medio: 0.2,
+    rapido: 0.3,
+  };
+
+  const targetHeights = [canvasHeight - 100, canvasHeight - 150, canvasHeight - 200];
+
   useEffect(() => {
     if (gameStarted) {
-      drawGame();
+      const intervalId = setInterval(() => {
+        moveTarget();
+        drawGame();
+      }, 16);
+      return () => clearInterval(intervalId);
     } else {
       drawStartScreen();
     }
@@ -42,8 +54,8 @@ const ParabolicShot = () => {
   };
 
   const setNewTarget = () => {
-    const newPosition = Math.floor(Math.random() * 20) * 5 + 5;
-    setTargetPosition(newPosition);
+    const randomHeight = targetHeights[Math.floor(Math.random() * targetHeights.length)];
+    setTargetPosition({ x: 0, y: randomHeight });
   };
 
   const drawStartScreen = () => {
@@ -80,9 +92,9 @@ const ParabolicShot = () => {
     ctx.lineWidth = 5;
     ctx.stroke();
 
-    const targetX = baseCannonX + targetPosition * scale;
+    const targetX = targetPosition.x * scale;
     ctx.fillStyle = 'green';
-    ctx.fillRect(targetX - 10, cannonY - 20, 20, 20);
+    ctx.fillRect(targetX - 10, targetPosition.y - 10, 20, 20);
 
     for (let i = 0; i <= maxDistance; i += 10) {
       const x = baseCannonX + i * scale;
@@ -98,6 +110,13 @@ const ParabolicShot = () => {
     }
   };
 
+  const moveTarget = () => {
+    setTargetPosition((prevPosition) => {
+      const newX = prevPosition.x + targetSpeeds[velocity];
+      return { ...prevPosition, x: newX >= maxDistance ? 0 : newX };
+    });
+  };
+
   const shoot = () => {
     if (!gameStarted) return;
 
@@ -108,7 +127,6 @@ const ParabolicShot = () => {
     let t = 0;
     
     const animate = () => {
-      ctx.clearRect(0, 0, canvasWidth, canvasHeight);
       drawGame();
 
       const currentCannonX = baseCannonX + cannonPosition * scale;
@@ -117,30 +135,25 @@ const ParabolicShot = () => {
       const y = cannonY - (v * Math.sin((angle * Math.PI) / 180) * t - 0.5 * gravity * t * t);
 
       ctx.beginPath();
-      ctx.moveTo(currentCannonX, y);
-      ctx.lineTo(currentCannonX, cannonY);
-      ctx.strokeStyle = 'rgba(0, 0, 0, 0.3)';
-      ctx.stroke();
-
-      ctx.beginPath();
-      ctx.arc(x, cannonY, 5, 0, 2 * Math.PI);
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
-      ctx.fill();
-
-      ctx.beginPath();
-      ctx.moveTo(currentCannonX, cannonY);
-      ctx.lineTo(x, cannonY);
-      ctx.strokeStyle = 'rgba(0, 0, 0, 0.1)';
-      ctx.stroke();
-
-      ctx.beginPath();
       ctx.arc(x, y, 5, 0, 2 * Math.PI);
       ctx.fillStyle = 'red';
       ctx.fill();
 
-      const targetX = baseCannonX + targetPosition * scale;
-      
-      if (Math.abs(x - targetX) < 15 && y > cannonY - 25) {
+      // Dibujar la sombra en el eje X e Y
+      ctx.beginPath();
+      ctx.arc(x, cannonY, 5, 0, 2 * Math.PI);
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(currentCannonX, y, 5, 0, 2 * Math.PI);
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+      ctx.fill();
+
+      const targetX = targetPosition.x * scale;
+      const targetY = targetPosition.y;
+
+      if (Math.abs(x - targetX) < 15 && Math.abs(y - targetY) < 15) {
         let points = 0;
         if (velocity === 'lento') points = 3;
         else if (velocity === 'medio') points = 2;
@@ -150,13 +163,11 @@ const ParabolicShot = () => {
         
         setScore((prevScore) => prevScore + points);
         setNewTarget();
-        setRefresh((prev) => prev + 1);
         return;
       }
 
       if (x > canvasWidth || y > cannonY) {
         setScore((prevScore) => prevScore - 1);
-        setRefresh((prev) => prev + 1);
         return;
       }
 
@@ -173,7 +184,6 @@ const ParabolicShot = () => {
       const newAngle = prevAngle + delta;
       return Math.max(0, Math.min(90, newAngle));
     });
-    setRefresh((prev) => prev + 1);
   };
 
   const moveCanon = (delta) => {
@@ -182,18 +192,15 @@ const ParabolicShot = () => {
       const newPosition = prevPosition + delta;
       return Math.max(0, Math.min(30, newPosition));
     });
-    setRefresh((prev) => prev + 1);
   };
 
   const changeVelocity = (newVelocity) => {
     if (!gameStarted) return;
     setVelocity(newVelocity);
-    setRefresh((prev) => prev + 1);
   };
 
   return (
     <div className="container">
-      
       <div className="game-board">
         <h1>Juego de Lanzamiento Parabólico</h1>
         <canvas ref={canvasRef} width={canvasWidth} height={canvasHeight} className="game-canvas" />
@@ -201,6 +208,9 @@ const ParabolicShot = () => {
         {gameStarted && (
           <>
             <div className="controls">
+            <div className="controls">
+              <button onClick={shoot}>Disparar</button>
+            </div>
               <button onClick={() => changeAngle(-5)} disabled={angle <= 0}>
                 -5°
               </button>
@@ -220,41 +230,35 @@ const ParabolicShot = () => {
             </div>
             <div className="controls">
               <div>
-                <span>Lento: 14 m/s</span>
+                <span>Lento: 18.2 m/s</span>
                 <button onClick={() => changeVelocity('lento')} className={velocity === 'lento' ? 'active' : ''}>
                   Lento
                 </button>
               </div>
               <div>
-                <span>Medio: 22,5 m/s</span>
+                <span>Medio: 22.8 m/s</span>
                 <button onClick={() => changeVelocity('medio')} className={velocity === 'medio' ? 'active' : ''}>
                   Medio
                 </button>
               </div>
               <div>
-                <span>Rápido: 31.5 m/s</span>
+                <span>Rápido: 31.8 m/s</span>
                 <button onClick={() => changeVelocity('rapido')} className={velocity === 'rapido' ? 'active' : ''}>
                   Rápido
                 </button>
               </div>
             </div>
-            <div className="controls">
-              <button onClick={shoot} className="shoot-button">
-                Disparar
-              </button>
+            <div className="score">
+              <p>Puntuación: {score}</p>
+              <p>Disparos realizados: {shotCount}</p>
             </div>
-            <div className="score">Puntuación: {score}</div>
-            <button onClick={() => window.location.href = "/"} className="shoot-button">
-                Regresar
-              </button>
           </>
         )}
+        {!gameStarted && <button onClick={startGame} className="shoot-button">Iniciar Juego</button>}
       </div>
-      {!gameStarted && (
-          <button onClick={startGame} className="start-button">
-            Iniciar Juego
-          </button>
-        )}
+      <button onClick={() => window.location.href = "/"} className="shoot-button">
+        Regresar
+      </button>
     </div>
   );
 };

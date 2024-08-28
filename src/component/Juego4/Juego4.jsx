@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Juego4.css';  // Importa el archivo CSS
+import './Juego42.css';  // Importa el archivo CSS
 
 const NewtonBoxGame = () => {
   const [spheres, setSpheres] = useState(0);
@@ -13,11 +13,11 @@ const NewtonBoxGame = () => {
   const [score, setScore] = useState(0);
   const [message, setMessage] = useState('');
   const [timeElapsed, setTimeElapsed] = useState(0);
-  
+
   const FRICTION_COEFFICIENT = 0.05;
   const GRAVITY = 9.8;
-  const FIELD_LENGTH = 300;
-  const BOX_WIDTH = 10;
+  const FIELD_LENGTH = 380;
+  const BOX_WIDTH = 30;
   const Tiempo = 0.1;
 
   useEffect(() => {
@@ -39,19 +39,26 @@ const NewtonBoxGame = () => {
               return newVelocity > 0 ? newVelocity : 0;
             });
           }
+
+          // Si la caja se detiene y está sobre la línea de meta, suma un punto
           if (newPosition >= FIELD_LENGTH || velocity <= 0) {
             setGameState('finished');
             clearInterval(positionInterval);
             clearInterval(timeInterval);  // Detener el contador de tiempo cuando el movimiento se detenga
-            if (isBoxOverlappingTarget(newPosition)) {
-              setScore((prevScore) => prevScore + 1);
+            
+            const boxStart = newPosition;
+            const boxEnd = newPosition + BOX_WIDTH;
+
+            if (isBoxOverlappingTarget(boxStart, boxEnd, target)) {
+              setScore((prevScore) => prevScore + 0.5);
               setMessage('¡Felicidades! Ganaste un punto. ¡Eres muy fuerte!');
-            } else if (newPosition + BOX_WIDTH < target) {
+            } else if (boxEnd < target) {
               setMessage('Poca fuerza aplicada. ¡Inténtalo de nuevo!');
             } else {
               setMessage('Mucha fuerza aplicada. ¡Inténtalo de nuevo!');
             }
           }
+
           return newPosition < FIELD_LENGTH ? newPosition : FIELD_LENGTH;
         });
       }, 100);
@@ -63,11 +70,8 @@ const NewtonBoxGame = () => {
     }
   }, [gameState, velocity, friction, target, spheres]);
 
-  const isBoxOverlappingTarget = (boxPosition) => {
-    return (
-      (boxPosition <= target && target < boxPosition + BOX_WIDTH) ||
-      (target <= boxPosition && boxPosition < target + 1)
-    );
+  const isBoxOverlappingTarget = (boxStart, boxEnd, target) => {
+    return target >= boxStart && target <= boxEnd;
   };
 
   const addSphere = () => {
@@ -166,7 +170,6 @@ const NewtonBoxGame = () => {
         <p>Fuerza aplicada: {force} N</p>
         <p>Tiempo de aplicación de la Fuerza aplicada: 0.1 s</p>
         <p>Puntuación: {score}</p>
-        
       </div>
       {message && (
         <div className="game-alert">
