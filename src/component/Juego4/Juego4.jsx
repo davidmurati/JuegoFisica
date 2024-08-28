@@ -18,7 +18,7 @@ const NewtonBoxGame = () => {
   const GRAVITY = 9.8;
   const FIELD_LENGTH = 380;
   const BOX_WIDTH = 30;
-  const Tiempo = 0.1;
+  const Tiempo = 1;
 
   useEffect(() => {
     let timeInterval;
@@ -131,8 +131,8 @@ const NewtonBoxGame = () => {
           type="range"
           value={force}
           onChange={(e) => setForce(parseInt(e.target.value))}
-          max={1010}
-          step={50}
+          max={100}
+          step={5}
           className="force-slider"
           disabled={gameState === 'moving'}
         />
@@ -163,12 +163,12 @@ const NewtonBoxGame = () => {
         )}
       </div>
       <div className="status">
-        <p>Aceleración: {aceleracion.toFixed(2)} unidades/s²</p>
-        <p>Velocidad: {velocity.toFixed(2)} unidades/s</p>
+        <p>Aceleración: {aceleracion.toFixed(2)} m/s²</p>
+        <p>Velocidad: {velocity.toFixed(2)} m/s</p>
         <p>Objetivo: {target !== null ? `${target} Distancia` : 'No establecido'}</p>
         <p>Peso total: {5 + spheres * 10} kg</p>
         <p>Fuerza aplicada: {force} N</p>
-        <p>Tiempo de aplicación de la Fuerza aplicada: 0.1 s</p>
+        <p>Tiempo de aplicación de la Fuerza aplicada: 1 s</p>
         <p>Puntuación: {score}</p>
       </div>
       {message && (
