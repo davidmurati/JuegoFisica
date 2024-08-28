@@ -200,6 +200,11 @@ const ParabolicShot = () => {
         
         {gameStarted && (
           <>
+          <div className="controls">
+              <button onClick={shoot} className="shoot-button">
+                Disparar
+              </button>
+            </div>
             <div className="controls">
               <button onClick={() => changeAngle(-5)} disabled={angle <= 0}>
                 -5°
@@ -237,11 +242,6 @@ const ParabolicShot = () => {
                   Rápido
                 </button>
               </div>
-            </div>
-            <div className="controls">
-              <button onClick={shoot} className="shoot-button">
-                Disparar
-              </button>
             </div>
             <div className="score">Puntuación: {score}</div>
             <button onClick={() => window.location.href = "/"} className="shoot-button">
