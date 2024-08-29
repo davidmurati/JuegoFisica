@@ -46,7 +46,7 @@
   font-size: 2vh;
   text-align: center;
 }
-.distance-marker{
+.distance-marker, .timer{
   color: #000;
 }
 
