@@ -46,6 +46,9 @@
   font-size: 2vh;
   text-align: center;
 }
+.distance-marker{
+  color: #000;
+}
 
 .start-line {
   left: 0;
