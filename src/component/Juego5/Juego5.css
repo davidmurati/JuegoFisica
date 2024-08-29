@@ -1,0 +1,230 @@
+/* Contenedor principal */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #1a1a1a; /* Fondo oscuro */
+  min-height: 100vh;
+  color: #ffffff; /* Letras en blanco */
+  font-family: 'Orbitron', sans-serif; /* Fuente futurista */
+  padding: 20px;
+}
+
+/* Estilo para el título */
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #39ff14; /* Verde neón */
+  text-shadow: 0 0 10px #39ff14;
+}
+
+/* Grupo de botones */
+.button-group {
+  margin-bottom: 20px;
+}
+
+.button-group button {
+  margin:  10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #333;
+  color: #fff;
+  border: 2px solid #39ff14;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.button-group button:hover {
+  background-color: #39ff14;
+  color: #333;
+}
+
+/* Contenedor de la barra de equilibrio */
+.balance-beam-container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+.balance-beam {
+  position: relative;
+  width: 100%;
+  height: 10px;
+  background-color: #333;
+  margin: 20px 0;
+  border-radius: 5px;
+  box-shadow: 0 0 15px #39ff14;
+}
+
+/* Marcadores de la barra de equilibrio */
+.balance-marker {
+  position: absolute;
+  width: 2px;
+  height: 20px;
+  background-color: #39ff14;
+  top: -10px;
+  transition: background-color 0.3s ease;
+}
+
+.balance-number {
+  position: absolute;
+  top: -40px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  width: 30px;
+  transform: translateX(-50%);
+  color: #39ff14;
+}
+
+/* Estilo para las pesas */
+.weight {
+  position: absolute;
+  bottom: 20px;
+  width: 30px; /* Tamaño ajustado */
+  height: 30px; /* Tamaño ajustado */
+  background-color: #ff007f;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 30px;
+  color: #fff;
+  font-weight: bold;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+  box-shadow: 0 0 10px #ff007f;
+}
+
+.weight.red { background-color: #ff007f; box-shadow: 0 0 10px #ff007f; }
+.weight.blue { background-color: #1e90ff; box-shadow: 0 0 10px #1e90ff; }
+.weight.green { background-color: #39ff14; box-shadow: 0 0 10px #39ff14; }
+
+/* Cambiar la opacidad si las pesas están superpuestas */
+.weight.overlapping {
+  opacity: 0.7;
+}
+
+/* Estilo para el contenedor del deslizador */
+.slider-container {
+  margin-top: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.slider-container input {
+  width: 80%;
+  max-width: 600px;
+  background-color: #333;
+  border: 2px solid #39ff14;
+  outline: none;
+}
+
+/* Tarjeta evaluadora */
+.evaluator-card {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #222;
+  border: 1px solid #39ff14;
+  border-radius: 8px;
+  box-shadow: 0 0 20px #39ff14;
+  max-width: 600px;
+  width: 100%;
+  color: #fff;
+}
+
+.evaluator-title {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #39ff14;
+  text-shadow: 0 0 10px #39ff14;
+}
+
+.evaluator-content {
+  font-size: 1rem;
+  color: #fff;
+}
+
+/* Barras de progreso */
+.progress-bar-container {
+  background-color: #333;
+  height: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px #39ff14;
+}
+
+.progress-bar {
+  background-color: #1e90ff;
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+/* Triángulo debajo de la barra de equilibrio */
+.triangle {
+  position: absolute;
+  top: 100%; /* Coloca el triángulo justo debajo de la barra */
+  left: 50%; /* Alineación horizontal centrada */
+  transform: translateX(-50%); /* Centra el triángulo en el eje X */
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 40px solid #39ff14; /* Triángulo invertido */
+  box-shadow: 0 0 10px #39ff14;
+}
+
+label{
+  margin:20px;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .balance-beam {
+    max-width: 90%;
+  }
+
+  .slider-container input {
+    width: 90%;
+  }
+
+  .evaluator-card {
+    padding: 15px;
+  }
+
+  .evaluator-title {
+    font-size: 1.25rem;
+  }
+
+  .triangle {
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 30px solid #39ff14; /* Reduce el tamaño del triángulo en pantallas más pequeñas */
+  }
+
+  .weight {
+    width: 25px; /* Tamaño más pequeño en pantallas pequeñas */
+    height: 25px; /* Tamaño más pequeño en pantallas pequeñas */
+    line-height: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .triangle {
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid #39ff14; /* Ajuste adicional para pantallas muy pequeñas */
+  }
+
+  .weight {
+    width: 20px; /* Tamaño más pequeño en pantallas muy pequeñas */
+    height: 20px; /* Tamaño más pequeño en pantallas muy pequeñas */
+    line-height: 20px;
+  }
+}

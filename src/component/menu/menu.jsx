@@ -34,6 +34,11 @@ const Menu = () => {
           onClick={() => window.location.href = "/Juego4"}>
           Juego 4
         </button>
+        <button 
+          className="game-button" 
+          onClick={() => window.location.href = "/Juego5"}>
+          Juego 5
+        </button>
         <img src={imagen1} className="App-logo" alt="logo" />
       </div>
     </div>
