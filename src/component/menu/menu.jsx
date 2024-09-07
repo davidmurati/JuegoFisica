@@ -4,8 +4,7 @@ import './menu.css';
 import imagen1 from './fisikids.jpg';
 import imagen2 from './fisicaImagen.png';
 import Footer from '../Footer/Footer';
-import Card from "../Card/Card.jsx";
-import { Carousel } from 'react-responsive-carousel';
+
 
 const Menu = () => {
   const history = useHistory();
