@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './menu.css';
-import imagen1 from './fisikids.jpeg';
+import imagen1 from './fisikids.jpg';
+import imagen2 from './fisicaImagen.png';
 import Footer from '../Footer/Footer';
 import Card from "../Card/Card.jsx";
 import { Carousel } from 'react-responsive-carousel';
@@ -72,9 +73,9 @@ const Menu = () => {
         <button className="game-button" onClick={() => window.location.href = "/Juego5"}>
           Balancín neón
         </button>
-       
-        
+
         <div className="menu-container">
+        <img src={imagen2} className="App-logo" alt="logo" />
           <h2>Simuladores externos</h2>
           <select value={selectedLink} onChange={handleSelectChange}>
             <option value="">Selecciona un tema:</option>
