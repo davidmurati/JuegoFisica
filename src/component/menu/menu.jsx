@@ -106,7 +106,7 @@ const Menu = () => {
             <option value="https://phet.colorado.edu/sims/html/density/latest/density_all.html?locale=es">Densidad 1</option>
             <option value="https://www.educaplus.org/game/principio-de-arquimedes">Densidad 2 PC</option>
             <option value="https://www.educaplus.org/game/principio-de-pascal">Principio de Pascal PC</option>
-            <option value="https://app.physion.net/">Mecánica</option>
+            <option value="https://app.physion.net/">Mecánica PC</option>
           </select>
           <button className="game-button" onClick={handleLinkNavigation}>Ir al enlace</button>
         </div>
