@@ -1,0 +1,202 @@
+/* Inicio.css */
+
+/* Reset and base styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+  }
+  
+  /* Container */
+  .home-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Header */
+  .header {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 1rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .header h5 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+  }
+  
+  /* Main content */
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  /* Sections */
+  .section-about,
+  .section-news {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+  }
+  
+  .section-about h4,
+  .section-news h4 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+  
+  /* Card styles */
+  .card {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease;
+    background-color: #fff;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+  }
+  
+  .card:hover {
+    box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+  }
+  
+  .card-img-top {
+    width: 100%;
+    height: auto;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .card-img-top:hover {
+    transform: scale(1.1);
+  }
+  
+  .card-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+    text-align: left;
+    margin: 0.5rem 0;
+    color: #333;
+  }
+  
+  .overflow {
+    overflow: hidden;
+  }
+  
+  /* Carousel */
+  .carousel .control-dots {
+    bottom: 0;
+  }
+  
+  .carousel .control-dots .dot {
+    box-shadow: none;
+    background: #2c3e50;
+    outline: 0;
+  }
+  
+  .carousel.carousel-slider .control-arrow {
+    background: rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Responsive design */
+  @media (min-width: 768px) {
+    .main-content {
+      flex-direction: row;
+    }
+  
+    .section-about,
+    .section-news {
+      flex: 1;
+    }
+  
+    .card {
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .home-container {
+      padding: 10px;
+    }
+  
+    .header h5 {
+      font-size: 1.2rem;
+    }
+  
+    .section-about h4,
+    .section-news h4 {
+      font-size: 1.5rem;
+    }
+  
+    .card {
+      margin-bottom: 15px;
+    }
+  
+    .card-body {
+      padding: 1rem;
+    }
+  
+    .card-text {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .card-body {
+      padding: 0.8rem;
+    }
+  
+    .card-text {
+      font-size: 0.8rem;
+    }
+    
+    .card-img-top:hover {
+      transform: scale(1.02);
+    }
+  }
+  
+  /* Accessibility */
+  a:focus,
+  button:focus {
+    outline: 2px solid #3498db;
+  }
+  
+  /* Animation */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .section-about,
+  .section-news {
+    animation: fadeIn 0.5s ease-in-out;
+  }

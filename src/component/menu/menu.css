@@ -1,76 +1,139 @@
 /* Contenedor principal */
 .menu-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-  }
+  max-width: 800px;
+  margin:  auto;
+  padding: 20px;
+  text-align: center;
+  
+}
+
+.heater-container {
+  background-color: #33333300;
+  color: #fff;
+  text-align:start;
+  padding: 1rem;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
 
 
-  /* Logo container styles */
+/* Logo container styles */
 .logo-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-    
-    width: 100%;
-    
-  }
-  
-  /* Logo styles */
-  .App-logo {
-    max-width:max-content;
-    max-height: fit-content;
-    width: 100%;
-    
-    
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  width: 50%;
+}
+
+/* Logo styles */
+.App-logo {
+  max-width: max-content;
+  max-height: fit-content;
+  width: 50%;
+  margin: 10px;
+}
+
+/* Título del menú */
+.menu-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #f3f3f3;
+}
+
+/* Contenedor de opciones de juego */
+.game-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Botón de juego */
+.game-button {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Efecto hover en los botones */
+.game-button:hover {
+  background-color: #0056b3;
+}
+
+/* Contenedor de enlaces externos */
+.external-links {
+  margin-top: 20px;
+  text-align: left;
+}
+
+/* Selector de enlaces */
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+}
+
+/* Efecto hover en el selector */
+select:hover {
+  background-color: #f1f1f1;
+}
+
+/* Botón de navegación para el selector */
+.navigate-button {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+/* Efecto hover en el botón de navegación */
+.navigate-button:hover {
+  background-color: #218838;
+}
+
+/* Responsivo para pantallas pequeñas */
+@media (max-width: 480px) {
+  .menu-container {
+    padding: 15px;
   }
 
-  
-  
-  /* Título del menú */
   .menu-title {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #f3f3f3;
+    font-size: 20px;
   }
-  
-  /* Contenedor de opciones de juego */
-  .game-options {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+
+  .game-button, .navigate-button {
+    font-size: 16px;
+    padding: 8px 16px;
   }
-  
-  /* Botón de juego */
-  .game-button {
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+
+  select {
+    font-size: 14px;
+    padding: 8px;
   }
-  
-  /* Efecto hover en los botones */
-  .game-button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Responsivo para pantallas pequeñas */
-  @media (max-width: 480px) {
-    .menu-container {
-      padding: 15px;
-    }
-  
-    .menu-title {
-      font-size: 20px;
-    }
-  
-    .game-button {
-      font-size: 16px;
-      padding: 8px 16px;
-    }
 }
