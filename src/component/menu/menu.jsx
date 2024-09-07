@@ -78,34 +78,34 @@ const Menu = () => {
           <h2>Simuladores externos</h2>
           <select value={selectedLink} onChange={handleSelectChange}>
             <option value="">Selecciona un tema:</option>
-            <option value="https://www.educaplus.org/game/distancia-y-desplazamiento">Distancia y desplazamiento</option>
-            <option value="https://www.educaplus.org/game/mru-grafica-a-t">Movimiento rectilíneo constante</option>
-            <option value="https://www.educaplus.org/game/mrua-grafica-a-t">Movimiento rectilíneo acelerado</option>
-            <option value="https://www.educaplus.org/game/laboratorio-de-movimiento-rectilineo">Laboratorio de movimiento rectilíneo</option>
-            <option value="https://www.educaplus.org/game/laboratorio-virtual-de-cinematica">Laboratorio virtual de cinemática</option>
-            <option value="https://www.educaplus.org/game/grafica-v-t">Movimiento rectilíneo uniforme (Velocidad/Tiempo)</option>
-            <option value="https://phet.colorado.edu/sims/html/projectile-motion/latest/projectile-motion_all.html?locale=es">Lanzamiento parabólico</option>
-            <option value="https://www.educaplus.org/game/sistema-de-referencia">Marco de referencia</option>
-            <option value="https://www.educaplus.org/game/graficas-de-la-caida-libre">Caída libre</option>
-            <option value="https://www.educaplus.org/game/alcance-y-altura-maxima">Lanzamiento parabólico (Alcance y altura)</option>
-            <option value="https://www.educaplus.org/game/primera-y-segunda-leyes-de-newton">Primera y segunda ley de Newton</option>
-            <option value="https://www.educaplus.org/game/plano-inclinado-con-rozamiento">Fuerza y fricción en plano inclinado</option>
-            <option value="https://www.educaplus.org/game/descomposicion-del-peso-en-un-plano-inclinado">Fuerza (descomposición del peso en un plano inclinado)</option>
-            <option value="https://www.educaplus.org/game/cantidad-de-movimiento">Cantidad de movimiento</option>
-            <option value="https://www.educaplus.org/game/ley-de-hooke-v2">Ley de Hooke</option>
-            <option value="https://www.educaplus.org/game/ejercicio-de-dinamica-4">Ejercicio de polea 1</option>
-            <option value="https://www.educaplus.org/game/dinamica-del-columpio">Tensión en columpio</option>
-            <option value="https://www.educaplus.org/game/fuerzas-en-el-giro-de-un-coche">Fuerza en movimiento circular</option>
-            <option value="https://www.educaplus.org/game/ejercicio-de-dinamica-1">Ejercicio de polea 2</option>
-            <option value="https://www.educaplus.org/game/condicion-de-equilibrio-en-el-balancin">Torque</option>
-            <option value="https://www.educaplus.org/game/impulso-mecanico">Impulso</option>
-            <option value="https://www.educaplus.org/game/laboratorio-de-choques-frontales">Choque</option>
+            <option value="https://www.educaplus.org/game/distancia-y-desplazamiento">Distancia y desplazamiento PC</option>
+            <option value="https://www.educaplus.org/game/mru-grafica-a-t">Movimiento rectilíneo constante PC</option>
+            <option value="https://www.educaplus.org/game/mrua-grafica-a-t">Movimiento rectilíneo acelerado PC</option>
+            <option value="https://www.educaplus.org/game/laboratorio-de-movimiento-rectilineo">Laboratorio de movimiento rectilíneo PC</option>
+            <option value="https://www.educaplus.org/game/laboratorio-virtual-de-cinematica">Laboratorio virtual de cinemática PC</option>
+            <option value="https://www.educaplus.org/game/grafica-v-t">Movimiento rectilíneo uniforme (Velocidad/Tiempo) PC</option>
+            <option value="https://phet.colorado.edu/es/simulations/projectile-motion">Lanzamiento parabólico</option>
+            <option value="https://www.educaplus.org/game/sistema-de-referencia">Marco de referencia PC</option>
+            <option value="https://www.educaplus.org/game/graficas-de-la-caida-libre">Caída libre PC </option>
+            <option value="https://www.educaplus.org/game/alcance-y-altura-maxima">Lanzamiento parabólico (Alcance y altura) PC</option>
+            <option value="https://phet.colorado.edu/sims/html/forces-and-motion-basics/latest/forces-and-motion-basics_all.html?locale=es">Primera y segunda ley de Newton</option>
+            <option value="https://www.educaplus.org/game/plano-inclinado-con-rozamiento">Fuerza y fricción en plano inclinado PC</option>
+            <option value="https://www.educaplus.org/game/descomposicion-del-peso-en-un-plano-inclinado">Fuerza (descomposición del peso en un plano inclinado) PC</option>
+            <option value="https://www.educaplus.org/game/cantidad-de-movimiento">Cantidad de movimiento PC</option>
+            <option value="https://phet.colorado.edu/sims/html/masses-and-springs/latest/masses-and-springs_all.html?locale=es">Ley de Hooke </option>
+            <option value="https://www.educaplus.org/game/ejercicio-de-dinamica-4">Ejercicio de polea 1 PC</option>
+            <option value="https://www.educaplus.org/game/dinamica-del-columpio">Tensión en columpio PC</option>
+            <option value="https://www.educaplus.org/game/fuerzas-en-el-giro-de-un-coche">Fuerza en movimiento circular PC</option>
+            <option value="https://www.educaplus.org/game/ejercicio-de-dinamica-1">Ejercicio de polea 2 PC</option>
+            <option value="https://phet.colorado.edu/sims/html/balancing-act/latest/balancing-act_all.html?locale=es">Torque PC</option>
+            <option value="https://www.educaplus.org/game/impulso-mecanico">Impulso PC</option>
+            <option value="https://www.educaplus.org/game/laboratorio-de-choques-frontales">Choque PC</option>
             <option value="https://phet.colorado.edu/es/simulations/states-of-matter">Estado de la materia</option>
             <option value="https://phet.colorado.edu/sims/html/gas-properties/latest/gas-properties_all.html?locale=es">Propiedades de los gases</option>
             <option value="https://phet.colorado.edu/sims/html/concentration/latest/concentration_all.html?locale=es">Chorro de agua</option>
             <option value="https://phet.colorado.edu/sims/html/density/latest/density_all.html?locale=es">Densidad 1</option>
-            <option value="https://www.educaplus.org/game/principio-de-arquimedes">Densidad 2</option>
-            <option value="https://www.educaplus.org/game/principio-de-pascal">Principio de Pascal</option>
+            <option value="https://www.educaplus.org/game/principio-de-arquimedes">Densidad 2 PC</option>
+            <option value="https://www.educaplus.org/game/principio-de-pascal">Principio de Pascal PC</option>
             <option value="https://app.physion.net/">Mecánica</option>
           </select>
           <button className="game-button" onClick={handleLinkNavigation}>Ir al enlace</button>
