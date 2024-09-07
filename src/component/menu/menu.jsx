@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './menu.css';
-import imagen1 from './fisikids.jpg';
+import imagen1 from './Fisikids.jpg';
 import imagen2 from './fisicaImagen.png';
 import Footer from '../Footer/Footer';
 
